@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "gruvbox.nvim": {
+      "rev": "334d5fd49fc8033f26408425366c66c6390c57bb",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
+    "lualine.nvim": {
+      "rev": "8811f3f3f4dc09d740c67e9ce399e7a541e2e5b2",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mason.nvim": {
+      "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "roslyn.nvim": {
+      "rev": "f2ec6ee6384c3b611ddc817b9e78b20cd0334bbb",
+      "src": "https://github.com/seblyng/roslyn.nvim"
+    }
+  }
+}
