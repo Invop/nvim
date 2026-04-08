@@ -116,29 +116,44 @@ vim.pack.add({
 })
 
 local dap = require('dap')
-local mason_path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "packages", "netcoredbg", "netcoredbg")
-if vim.uv.os_uname().sysname == "Windows_NT" then
-  mason_path = mason_path .. ".exe"
+
+
+-- Define the base path parts
+local path_parts = { vim.fn.stdpath("data"), "mason", "packages", "netcoredbg" }
+
+-- Adjust path based on OS
+if vim.g.is_windows then
+    -- Windows structure: netcoredbg/netcoredbg/netcoredbg.exe
+    table.insert(path_parts, "netcoredbg")
+    table.insert(path_parts, "netcoredbg.exe")
+else
+    -- Linux/macOS structure: netcoredbg/netcoredbg
+    table.insert(path_parts, "netcoredbg")
 end
+
+local mason_path = vim.fs.joinpath(unpack(path_parts))
+
+-- Security: Use absolute path expansion for 0.11 compliance
+local final_path = vim.fn.expand(mason_path)
+
 local netcoredbg_adapter = {
-  type = "executable",
-  command = mason_path,
-  args = { "--interpreter=vscode" },
+    type = "executable",
+    command = final_path,
+    args = { "--interpreter=vscode" },
 }
 
 dap.adapters.netcoredbg = netcoredbg_adapter 
 dap.adapters.coreclr = netcoredbg_adapter  
 
 dap.configurations.cs = {
-  {
-    type = "coreclr",
-    name = "LAUNCH directly from nvim",
-    request = "launch",
-    program = function()
-      -- The autopicker remains compatible as it returns a string path
-      return require("dap-dll-autopicker").build_dll_path()
-    end
-  },
+    {
+        type = "coreclr",
+        name = "LAUNCH directly from nvim",
+        request = "launch",
+        program = function()
+            return require("dap-dll-autopicker").build_dll_path()
+        end
+    },
 }
 vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP: Continue/Start" })
 vim.keymap.set("n", "<F9>", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
