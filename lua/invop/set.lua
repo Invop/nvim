@@ -1,5 +1,5 @@
 vim.opt.clipboard = "unnamedplus"
-
+vim.opt.updatetime = 250
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
