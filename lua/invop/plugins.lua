@@ -209,3 +209,16 @@ end, { desc = "Test: Run All in Project" })
 vim.keymap.set("n", "<leader>tS", function()
     neotest.run.stop()
 end, { desc = "Test: Stop Execution" })
+
+
+--9
+vim.pack.add({
+    { src = "https://github.com/nvim-telescope/telescope.nvim" },
+})
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
