@@ -11,6 +11,7 @@ vim.pack.add({
   { src = "https://github.com/ellisonleao/gruvbox.nvim" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/folke/trouble.nvim" },
+  { src = "https://github.com/romgrk/barbar.nvim" },
 
   -- LSP
   { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -38,6 +39,9 @@ vim.pack.add({
 
   -- Helpers
   { src = "https://github.com/folke/which-key.nvim" },
+
+  --Yazi
+  { src = "https://github.com/mikavilpas/yazi.nvim" },
 })
 
 require("invop.plugins.ui")
@@ -47,3 +51,5 @@ require("invop.plugins.treesitter")
 require("invop.plugins.debug")
 require("invop.plugins.telescope")
 require("invop.plugins.whichkey")
+require("invop.plugins.yazi")
+require("invop.plugins.barbar")
