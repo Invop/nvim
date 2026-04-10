@@ -13,4 +13,4 @@ vim.opt.colorcolumn = "80"
 
 vim.g.is_windows = vim.uv.os_uname().sysname == "Windows_NT"
 
-vim.o.autocomplete = false
+vim.opt.autocomplete = false

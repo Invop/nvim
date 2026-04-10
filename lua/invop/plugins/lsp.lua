@@ -24,36 +24,34 @@ require("mason").setup({
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+vim.lsp.config['lua_ls'] = {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim' } },
+      workspace = { checkThirdParty = false },
+    }
+  }
+}
+
+vim.lsp.config['tailwindcss'] = {
+  capabilities = capabilities,
+  filetypes = {
+    "html", "css", "scss", "javascript", "javascriptreact",
+    "typescript", "typescriptreact", "vue", "svelte", "heex"
+  },
+}
+
 require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls", "rust_analyzer", "vtsls", "tailwindcss" },
   handlers = {
     function(server)
-      vim.lsp.config[server] = { capabilities = capabilities }
+      if not vim.lsp.config[server] then
+        vim.lsp.config[server] = { capabilities = capabilities }
+      end
       vim.lsp.enable(server)
     end,
-
-    ["lua_ls"] = function()
-      require("lspconfig").lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            runtime = { version = 'LuaJIT' },
-            diagnostics = { globals = { 'vim' } },
-            workspace = { checkThirdParty = false },
-          }
-        }
-      })
-    end,
-
-    ["tailwindcss"] = function()
-      require("lspconfig").tailwindcss.setup({
-        capabilities = capabilities,
-        filetypes = { 
-          "html", "css", "scss", "javascript", "javascriptreact", 
-          "typescript", "typescriptreact", "vue", "svelte", "heex" 
-        },
-      })
-    end
   }
 })
 
