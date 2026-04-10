@@ -1,7 +1,6 @@
 vim.opt.clipboard = "unnamedplus"
 vim.opt.updatetime = 250
 vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -13,3 +12,5 @@ vim.opt.expandtab = true
 vim.opt.colorcolumn = "80"
 
 vim.g.is_windows = vim.uv.os_uname().sysname == "Windows_NT"
+
+vim.o.autocomplete = false

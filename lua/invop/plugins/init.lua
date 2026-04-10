@@ -1,0 +1,7 @@
+require("invop.plugins.install")
+require("invop.plugins.ui")
+require("invop.plugins.lsp")
+require("invop.plugins.blink")
+require("invop.plugins.dap")
+require("invop.plugins.neotest")
+require("invop.plugins.trouble")
