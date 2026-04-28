@@ -1,8 +1,10 @@
 local wk = require("which-key")
-
+vim.keymap.set('n','<leader>?',function()
+    require("which-key").show({ global = false })
+end,{noremap = true,silent = true})
 wk.setup({
   preset = "modern",
-  delay = 200,
+  delay = 200, 
 })
 wk.add({
   { "<leader>f",  group = "find (telescope)" },

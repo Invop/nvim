@@ -45,6 +45,7 @@ vim.pack.add({
 })
 
 require("invop.plugins.ui")
+require("invop.plugins.trouble")
 require("invop.plugins.lsp")
 require("invop.plugins.completion")
 require("invop.plugins.treesitter")
