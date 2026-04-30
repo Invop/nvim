@@ -32,12 +32,15 @@ vim.lsp.config['tailwindcss'] = {
   capabilities = capabilities,
   filetypes = {
     "html", "css", "scss", "javascript", "javascriptreact",
-    "typescript", "typescriptreact", "vue", "svelte", "heex"
+    "typescript", "typescriptreact", "vue", "svelte", "heex", "htmlangular"
   },
 }
-
+vim.lsp.config['angularls'] = {
+  capabilities = capabilities,
+  filetypes = { 'typescript', 'html', 'typescriptreact', 'htmlangular' },
+}
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "rust_analyzer", "vtsls", "tailwindcss" },
+  ensure_installed = { "lua_ls", "rust_analyzer", "vtsls", "tailwindcss", "angularls" },
   handlers = {
     function(server)
       if not vim.lsp.config[server] then

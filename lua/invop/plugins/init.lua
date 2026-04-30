@@ -21,6 +21,7 @@ vim.pack.add({
 
   -- Completion
   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
+  {src = "https://github.com/windwp/nvim-ts-autotag"},
 
   -- Treesitter
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -54,3 +55,5 @@ require("invop.plugins.telescope")
 require("invop.plugins.whichkey")
 require("invop.plugins.yazi")
 require("invop.plugins.barbar")
+require("invop.plugins.nvim-ts-autotag")
+require("invop.plugins.htmlangular")
